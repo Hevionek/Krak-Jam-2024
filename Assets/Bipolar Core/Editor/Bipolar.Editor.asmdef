@@ -1,0 +1,18 @@
+{
+    "name": "Bipolar.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:47c0266d9afda534eab8026647669f06"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
