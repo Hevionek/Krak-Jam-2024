@@ -9,7 +9,7 @@ public class UndergroundWorldChanger : MonoBehaviour
 
     [SerializeField]
     private float undergroundValue;
-    public float UnderGroundValue => undergroundValue;
+    public float UnderroundValue => undergroundValue;
 
     public bool IsInTransition { get; private set; }
 
@@ -17,9 +17,7 @@ public class UndergroundWorldChanger : MonoBehaviour
     private float animationSpeed = 3;
 
     [SerializeField]
-    private Transform movedTransform;
-    [SerializeField]
-    private Transform rotatedTransform;
+    private Transform head;
 
     [SerializeField]
     private float headHeight = 1.5f;
@@ -31,7 +29,7 @@ public class UndergroundWorldChanger : MonoBehaviour
 
     private void Awake()
     {
-        undergroundValue = movedTransform.localPosition.y / headHeight;
+        undergroundValue = head.localPosition.y / headHeight;
         RefreshOrientation();
     }
 
@@ -59,17 +57,11 @@ public class UndergroundWorldChanger : MonoBehaviour
 
     private void RefreshOrientation()
     {
-        var headLocalPosition = movedTransform.localPosition;
-        headLocalPosition.y = Mathf.Abs(undergroundValue) * headHeight;
-        movedTransform.localPosition = headLocalPosition;
+        var headLocalPosition = head.localPosition;
+        headLocalPosition.y = undergroundValue * headHeight;
+        head.localPosition = headLocalPosition;
 
         var currentAngle = Mathf.Lerp(0f, 180f, Mathf.InverseLerp(1, -1, undergroundValue));
-        var localRotation = rotatedTransform.localEulerAngles;
-        localRotation.z = currentAngle;
-        rotatedTransform.localEulerAngles = localRotation;
-    }
-
-    private void OnValidate()
-    {
+        head.localRotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
     }
 }

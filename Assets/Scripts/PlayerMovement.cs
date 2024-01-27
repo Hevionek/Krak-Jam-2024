@@ -26,16 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform forwardProvider;
+    [SerializeField]
+    private Transform rightProvider;
 
     [SerializeField]
     private float moveSpeed;
 
     private void Update()
     {
-        var motion = MoveInputProvider.GetMotion();
-        if (motion.sqrMagnitude > 1)
-            motion.Normalize();
+        var motionInput = MoveInputProvider.GetMotion();
+        if (motionInput.sqrMagnitude > 1)
+            motionInput.Normalize();
 
-        CharacterController.Move(moveSpeed * Time.deltaTime * forwardProvider.TransformDirection(motion.x, 0, motion.y));
+        var direction = forwardProvider.forward * motionInput.y + rightProvider.right * motionInput.x;
+        CharacterController.Move(moveSpeed * Time.deltaTime * direction);
     }
 }

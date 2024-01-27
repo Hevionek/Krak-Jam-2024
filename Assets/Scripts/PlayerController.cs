@@ -18,10 +18,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        movement.enabled = !undergroundWorldChanger.IsInTransition;
+        viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
+        viewRotation.sensitivity.x = horizontalRotationSpeed * undergroundWorldChanger.UnderroundValue;
+
+
         if (Input.GetKeyUp(switchKey))
         {
-            if (undergroundWorldChanger.UnderGroundValue > 0)
+            if (undergroundWorldChanger.UnderroundValue > 0)
                 undergroundWorldChanger.GoUnderground();    
             else
                 undergroundWorldChanger.GoOverground();
