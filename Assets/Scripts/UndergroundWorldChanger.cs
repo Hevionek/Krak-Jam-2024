@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UndergroundWorldChanger : MonoBehaviour
 {
+    public event System.Action<float> OnTransitionStarted;
+    public event System.Action<float> OnTransitionEnded;
+
     private const float undergroundAngle = 180;
     private const float overgroundAngle = 0;
 
@@ -42,6 +45,7 @@ public class UndergroundWorldChanger : MonoBehaviour
     private IEnumerator TransitionWorldCo(float targetValue)
     {
         IsInTransition = true;
+        OnTransitionStarted?.Invoke(targetValue);
         float direction = Mathf.Sign(targetValue - undergroundValue);
         while (direction * undergroundValue < direction * targetValue)
         {
@@ -53,6 +57,7 @@ public class UndergroundWorldChanger : MonoBehaviour
         undergroundValue = targetValue;
         RefreshOrientation();
         IsInTransition = false;
+        OnTransitionEnded?.Invoke(targetValue);
     }
 
     private void RefreshOrientation()

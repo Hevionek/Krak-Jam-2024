@@ -34,12 +34,17 @@ public class PlayerController : MonoBehaviour
             _ => layersSettings.noCollisionLayer,
         };
 
-        if (movement.IsGrounded && Input.GetKeyUp(switchKey))
+        if (Input.GetKeyUp(switchKey) && CanRotate())
         {
             if (undergroundValue > 0)
                 undergroundWorldChanger.GoUnderground();    
             else
                 undergroundWorldChanger.GoOverground();
         }
+    }
+
+    private bool CanRotate()
+    {
+        return movement.IsGrounded && movement.transform.position.y < 0.1f;
     }
 }
