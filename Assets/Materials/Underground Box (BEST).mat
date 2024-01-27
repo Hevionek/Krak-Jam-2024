@@ -61,5 +61,5 @@ Material:
     - _QueueOffset: 0
     - _alphaclip: 0.455
     m_Colors:
-    - _Color: {r: 0.39607844, g: 0.34509805, b: 0.28627452, a: 1}
+    - _Color: {r: 0.504, g: 0.44550002, b: 0.37800002, a: 1}
   m_BuildTextureStacks: []
