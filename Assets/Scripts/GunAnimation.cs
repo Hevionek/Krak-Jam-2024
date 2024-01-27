@@ -14,14 +14,6 @@ public class GunAnimation : MonoBehaviour
     [SerializeField]
     private float animationSpeed;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayShootAnimation();   
-        }
-    }
-
     public void PlayShootAnimation()
     {
         StopAllCoroutines();
