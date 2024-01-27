@@ -1,46 +1,75 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 
 public class UndergroundWorldChanger : MonoBehaviour
 {
-    private const float undergroundAngle = -180;
+    private const float undergroundAngle = 180;
     private const float overgroundAngle = 0;
 
     [SerializeField]
-    private bool isUnderground;
-    public bool IsUnderground
-    {
-        get => isUnderground;
-        set
-        {
-            StopAllCoroutines();
-            isUnderground = value;
-            StartCoroutine(TransitionWorldCo());
-        }
-    }
+    private float undergroundValue;
+    public float UnderGroundValue => undergroundValue;
+
+    public bool IsInTransition { get; private set; }
 
     [SerializeField]
-    private float rotationSpeed = 300;
+    private float animationSpeed = 3;
 
-    private IEnumerator TransitionWorldCo()
+    [SerializeField]
+    private Transform movedTransform;
+    [SerializeField]
+    private Transform rotatedTransform;
+
+    [SerializeField]
+    private float headHeight = 1.5f;
+
+    [Button]
+    public void GoOverground() => GoToValue(1);
+    [Button]
+    public void GoUnderground() => GoToValue(-1);
+
+    private void Awake()
     {
-        float targetAngle = isUnderground ? undergroundAngle : overgroundAngle;
-        float startAngle = transform.localEulerAngles.z;
-        float progress = 0;
-        float progressSpeed = rotationSpeed / Mathf.Abs(startAngle - targetAngle);
-        while (progress < 1)
+        undergroundValue = movedTransform.localPosition.y / headHeight;
+        RefreshOrientation();
+    }
+
+    private void GoToValue(float value) 
+    {
+        StopAllCoroutines();
+        StartCoroutine(TransitionWorldCo(value));
+    }
+
+    private IEnumerator TransitionWorldCo(float targetValue)
+    {
+        IsInTransition = true;
+        float direction = Mathf.Sign(targetValue - undergroundValue);
+        while (direction * undergroundValue < direction * targetValue)
         {
-            progress += Time.deltaTime * progressSpeed;
-            float angle = Mathf.Lerp(startAngle, targetAngle, progress);
-            transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            undergroundValue += direction * animationSpeed * Time.deltaTime;
+            RefreshOrientation();
             yield return null;
         }
-        transform.localRotation = Quaternion.AngleAxis(targetAngle, Vector3.forward);
+
+        undergroundValue = targetValue;
+        RefreshOrientation();
+        IsInTransition = false;
+    }
+
+    private void RefreshOrientation()
+    {
+        var headLocalPosition = movedTransform.localPosition;
+        headLocalPosition.y = Mathf.Abs(undergroundValue) * headHeight;
+        movedTransform.localPosition = headLocalPosition;
+
+        var currentAngle = Mathf.Lerp(0f, 180f, Mathf.InverseLerp(1, -1, undergroundValue));
+        var localRotation = rotatedTransform.localEulerAngles;
+        localRotation.z = currentAngle;
+        rotatedTransform.localEulerAngles = localRotation;
     }
 
     private void OnValidate()
     {
-        if (Application.isPlaying) 
-            IsUnderground = IsUnderground;
     }
 }
