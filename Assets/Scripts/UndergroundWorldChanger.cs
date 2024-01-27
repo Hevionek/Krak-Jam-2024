@@ -9,7 +9,7 @@ public class UndergroundWorldChanger : MonoBehaviour
 
     [SerializeField]
     private float undergroundValue;
-    public float UnderroundValue => undergroundValue;
+    public float UndergroundValue => undergroundValue;
 
     public bool IsInTransition { get; private set; }
 

@@ -4,6 +4,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
+    private LayersSettings layersSettings;
+
+    [SerializeField]
     private UndergroundWorldChanger undergroundWorldChanger;
     [SerializeField]
     private PlayerMovement movement;
@@ -12,19 +15,28 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float horizontalRotationSpeed = 1.8f;
-
     [SerializeField]
     private KeyCode switchKey = KeyCode.LeftShift;
 
     private void Update()
     {
+        var undergroundValue = undergroundWorldChanger.UndergroundValue;
         viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
-        viewRotation.sensitivity.x = horizontalRotationSpeed * undergroundWorldChanger.UnderroundValue;
+        viewRotation.sensitivity.x = horizontalRotationSpeed * undergroundValue;
+        var center = movement.CharacterController.center;
+        center.y = undergroundValue;
+        movement.CharacterController.center = center;
 
-
-        if (Input.GetKeyUp(switchKey))
+        movement.CharacterController.gameObject.layer = undergroundValue switch
         {
-            if (undergroundWorldChanger.UnderroundValue > 0)
+            >= 1 => layersSettings.overgroundLayer,
+            <= -1 => layersSettings.undergroundLayer,
+            _ => layersSettings.noCollisionLayer,
+        };
+
+        if (movement.IsGrounded && Input.GetKeyUp(switchKey))
+        {
+            if (undergroundValue > 0)
                 undergroundWorldChanger.GoUnderground();    
             else
                 undergroundWorldChanger.GoOverground();

@@ -8,13 +8,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Ignore Collision
   - Water
   - UI
-  - 
-  - 
-  - Ground
-  - 
+  - Overground Collision
+  - Underground Collision
+  - Overground Floor
+  - Underground Floor
   - 
   - 
   - 
