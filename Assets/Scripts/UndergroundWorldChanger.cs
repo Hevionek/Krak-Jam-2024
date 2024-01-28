@@ -32,7 +32,7 @@ public class UndergroundWorldChanger : MonoBehaviour
 
     private void Awake()
     {
-        undergroundValue = head.localPosition.y / headHeight;
+        //undergroundValue = head.localPosition.y / headHeight;
         RefreshOrientation();
     }
 

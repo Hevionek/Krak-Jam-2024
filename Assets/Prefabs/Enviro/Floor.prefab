@@ -123,7 +123,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 0}
+  m_TerrainData: {fileID: 15600000, guid: 8506b74e6697c984fa320a822517112b, type: 2}
   m_EnableTreeColliders: 1
 --- !u!1 &4462569978127553852
 GameObject:
