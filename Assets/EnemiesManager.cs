@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class EnemiesSpawner : MonoBehaviour
+public class EnemiesManager : MonoBehaviour
 {
+    public event System.Action OnAllEnemiesKilled;
+
     [SerializeField]
     private Vector2 size;
 
@@ -32,5 +34,14 @@ public class EnemiesSpawner : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(size.x, 1, size.y));
+    }
+
+    private void Update()
+    {
+        if (transform.childCount == 0)
+        {
+            OnAllEnemiesKilled?.Invoke();
+            Time.timeScale = 0;
+        }
     }
 }

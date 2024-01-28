@@ -9,7 +9,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
-        damagableObject.OnDamaged += DamagableObject_OnDamaged;       
+        damagableObject.OnDamaged += DamagableObject_OnDamaged;
+        damagableObject.OnDied += DamagableObject_OnDied;
+    }
+
+    private void DamagableObject_OnDied(DamagableObject obj)
+    {
+        Destroy(gameObject);
     }
 
     private void DamagableObject_OnDamaged(DamagableObject damagable)
@@ -25,6 +31,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDisable()
     {
-        damagableObject.OnDamaged -= DamagableObject_OnDamaged;       
+        damagableObject.OnDamaged -= DamagableObject_OnDamaged;
+        damagableObject.OnDied -= DamagableObject_OnDied;
     }
 }
