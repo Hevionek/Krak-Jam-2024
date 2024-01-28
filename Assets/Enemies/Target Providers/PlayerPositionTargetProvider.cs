@@ -6,7 +6,7 @@ namespace Enemies.Targetting
     public class PlayerPositionTargetProvider : EnemyTargetProvider
     {
         [SerializeField, Tag]
-        private string playerTag;
+        private string playerTag = "Player";
 
         private Transform playerTransform;
         public Transform PlayerTransform

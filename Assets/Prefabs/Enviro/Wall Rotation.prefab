@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 100, y: 6}
+  m_Size: {x: 100, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -139,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100, y: 100, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 120, y: 100, z: 20}
+  m_Center: {x: 8.409258e-14, y: 0, z: 11.012015}
 --- !u!1 &1684398662739285217
 GameObject:
   m_ObjectHideFlags: 0
