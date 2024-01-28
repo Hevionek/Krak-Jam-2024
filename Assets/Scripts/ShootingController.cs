@@ -1,5 +1,5 @@
+using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ShootingController : MonoBehaviour
 {
@@ -12,10 +12,14 @@ public class ShootingController : MonoBehaviour
 
     [SerializeField]
     private BulletsSpawner bulletsSpawner;
+    [SerializeField]
+    private float shootDelay = 0.5f;
+    private float shootTimer = 0f;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        shootTimer -= Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && shootTimer < 0)
         {
             var camera = Camera.main;
             var screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f);
@@ -28,6 +32,7 @@ public class ShootingController : MonoBehaviour
             var bullet = bulletsSpawner.SpawnBullet(bulletOrigin.position, bulletDirection);
             bullet.Shoot();
             gunAnimation.PlayShootAnimation();
+            shootTimer = shootDelay;
         }
     }
 }
