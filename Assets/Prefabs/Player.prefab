@@ -54,6 +54,7 @@ MonoBehaviour:
   undergroundWorldChanger: {fileID: 3878251863062411494}
   movement: {fileID: 2084256224864546240}
   viewRotation: {fileID: 5001072182479197747}
+  shootingController: {fileID: 6923188924961685467}
   horizontalRotationSpeed: 1.8
   switchKey: 306
 --- !u!114 &3878251863062411494
@@ -149,8 +150,7 @@ MonoBehaviour:
   gunAnimation: {fileID: 2326542594013951484}
   maxDistance: 100
   bulletOrigin: {fileID: 213469831201223508}
-  bulletPrototype: {fileID: 2873134890327086294, guid: 96653a18b693d6a40bbc75a85a81f459,
-    type: 3}
+  bulletsSpawner: {fileID: 0}
 --- !u!1 &4735794119060793986
 GameObject:
   m_ObjectHideFlags: 0
