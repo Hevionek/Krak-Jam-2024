@@ -25,13 +25,15 @@ public class ShootingController : MonoBehaviour
             var camera = Camera.main;
             var screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f);
             var ray = camera.ScreenPointToRay(screenCenter);
-            var hitPosition = Physics.Raycast(ray, out var hitInfo, maxDistance) 
-                ? hitInfo.point 
-                : ray.origin + ray.direction * maxDistance;
 
-            var bulletDirection = (hitPosition - bulletOrigin.position).normalized;
-            var bullet = bulletsSpawner.SpawnBullet(bulletOrigin.position, bulletDirection);
-            bullet.Shoot();
+            if (Physics.Raycast(camera.transform.position, camera.transform.forward, out var hitInfo, maxDistance))
+            {
+                if (hitInfo.collider.TryGetComponent<DamagableObject>(out var damagable))
+                {
+                    damagable.Damage();
+                }
+            }
+
             gunAnimation.PlayShootAnimation();
             shootTimer = shootDelay;
             OnBulletShot?.Invoke();

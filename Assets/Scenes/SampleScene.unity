@@ -2221,7 +2221,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2532219526794004194}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2532219526794004195}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467b9ae8badc70744b1b52b6dd5cc0eb, type: 3}
@@ -2476,7 +2476,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0c35fb66a54e94345baa7488a8b1ed40, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3056,6 +3056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819719324}
+  - component: {fileID: 819719325}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3080,6 +3081,20 @@ Transform:
   - {fileID: 2005948923}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &819719325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819719323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbe157e9c4a345b2fed36ae2b2597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesManager: {fileID: 1370986329}
+  endPanel: {fileID: 0}
 --- !u!1001 &822482271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7720,6 +7735,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27681f355be644849affd3a1fbf85265, type: 3}
+--- !u!1 &2532219526794004195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3975607183281857116, guid: 27681f355be644849affd3a1fbf85265,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532219526794004194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2763764280075210938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8066,6 +8087,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 819719324}
     m_Modifications:
+    - target: {fileID: 579668647533442318, guid: 93f71e8ecbafb3641a3332f4c1f06359,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4227487917644605507, guid: 93f71e8ecbafb3641a3332f4c1f06359,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8164,6 +8190,16 @@ PrefabInstance:
     - target: {fileID: 4227487917644605507, guid: 93f71e8ecbafb3641a3332f4c1f06359,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391834188305936674, guid: 93f71e8ecbafb3641a3332f4c1f06359,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2532219526794004195}
+    - target: {fileID: 8611791311982487963, guid: 93f71e8ecbafb3641a3332f4c1f06359,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8902465281020390066, guid: 93f71e8ecbafb3641a3332f4c1f06359,

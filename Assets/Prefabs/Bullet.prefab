@@ -181,5 +181,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 200
-  speed: 20
+  speed: 200
   distance: 0
