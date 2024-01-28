@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement movement;
     [SerializeField]
     private FPPViewRotation viewRotation;
+    [SerializeField]
+    private ShootingController shootingController;
 
     [SerializeField]
     private float horizontalRotationSpeed = 1.8f;
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         var undergroundValue = undergroundWorldChanger.UndergroundValue;
-        viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
+        shootingController.enabled = viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
         viewRotation.sensitivity.x = horizontalRotationSpeed * undergroundValue;
         var center = movement.CharacterController.center;
         center.y = undergroundValue;

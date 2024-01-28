@@ -11,27 +11,7 @@ public class ShootingController : MonoBehaviour
     private Transform bulletOrigin;
 
     [SerializeField]
-    private Bullet bulletPrototype;
-
-    private ObjectPool<Bullet> bulletsPool;
-
-    private void Awake()
-    {
-        bulletsPool = new ObjectPool<Bullet>(SpawnBullet);
-    }
-
-    private Bullet SpawnBullet()
-    {
-        var bullet = Instantiate(bulletPrototype);
-        bullet.OnDestroyed += ReleaseBullet;
-        return bullet;
-    }
-
-    private void ReleaseBullet(Bullet bullet)
-    {
-        bullet.gameObject.SetActive(false);
-        bulletsPool.Release(bullet);
-    }
+    private BulletsSpawner bulletsSpawner;
 
     private void Update()
     {
@@ -45,11 +25,9 @@ public class ShootingController : MonoBehaviour
                 : ray.origin + ray.direction * maxDistance;
 
             var bulletDirection = (hitPosition - bulletOrigin.position).normalized;
-            var bullet = bulletsPool.Get();
-            bullet.transform.position = bulletOrigin.position;
-            bullet.transform.forward = bulletDirection;
+            var bullet = bulletsSpawner.SpawnBullet(bulletOrigin.position, bulletDirection);
             bullet.Shoot();
-            //gunAnimation.PlayShootAnimation();
+            gunAnimation.PlayShootAnimation();
         }
     }
 }
