@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class DistanceActivationCondition : EnemyActivationCondition
+
+    public abstract class DistanceActivationCondition : EnemyActivationCondition
     {
-        [SerializeField, Tooltip("Transform which will revive enemy when nearby")]
-        private Transform activator;
         [SerializeField]
         private float distance = 1;
         [SerializeField, Min(0.0001f)]
@@ -17,9 +16,11 @@ namespace Enemies
         [SerializeField, ReadOnly]
         private bool isNearby;
 
+        protected abstract Transform Activator { get; }
+
         public override bool CheckCondition()
         {
-            float squareDistance = (transform.position - activator.position).sqrMagnitude;
+            float squareDistance = (transform.position - Activator.position).sqrMagnitude;
             if (isNearby == false && squareDistance < distance * distance)
             {
                 isNearby = true;
