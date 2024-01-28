@@ -71,7 +71,17 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3261724969801863909}
+    - targetCorrespondingSourceObject: {fileID: 1645051839472606498, guid: d6d2f449b32c44c48937851db90ffe48,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8834448037870388465}
   m_SourcePrefab: {fileID: 100100000, guid: d6d2f449b32c44c48937851db90ffe48, type: 3}
+--- !u!23 &122338357648835990 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6242916111733858911, guid: d6d2f449b32c44c48937851db90ffe48,
+    type: 3}
+  m_PrefabInstance: {fileID: 6274052174517757897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3159579408105852451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8991715439682529770, guid: d6d2f449b32c44c48937851db90ffe48,
@@ -98,6 +108,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   health: 0
+--- !u!114 &8834448037870388465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739349045384575723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a3c72fd7f5874469817420c7662c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagableObject: {fileID: 3261724969801863909}
+  meshRenderer: {fileID: 122338357648835990}
 --- !u!114 &4844735569693653646 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1453005041747090759, guid: d6d2f449b32c44c48937851db90ffe48,
