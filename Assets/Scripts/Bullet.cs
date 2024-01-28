@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
@@ -10,6 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float speed = 20;
 
+    [SerializeField, ReadOnly]
     private float distance;
 
     private Rigidbody _rigidbody;
@@ -44,6 +46,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.TryGetComponent<DamagableObject>(out var damagable))
+            damagable.Damage();
+
         OnDestroyed?.Invoke(this);
     }
 }
