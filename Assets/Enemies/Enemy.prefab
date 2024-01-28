@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e764d6702234af8409fbac48d44d5fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
+  distance: 15
   deadzone: 1
   isNearby: 0
   singletonTag: Player
