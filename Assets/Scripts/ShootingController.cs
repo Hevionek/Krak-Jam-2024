@@ -1,8 +1,9 @@
-using NaughtyAttributes;
 using UnityEngine;
 
 public class ShootingController : MonoBehaviour
 {
+    public event System.Action OnBulletShot;
+
     [SerializeField]
     private GunAnimation gunAnimation;
     [SerializeField]
@@ -33,6 +34,7 @@ public class ShootingController : MonoBehaviour
             bullet.Shoot();
             gunAnimation.PlayShootAnimation();
             shootTimer = shootDelay;
+            OnBulletShot?.Invoke();
         }
     }
 }
