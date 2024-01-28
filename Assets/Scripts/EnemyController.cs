@@ -20,13 +20,15 @@ public class EnemyController : MonoBehaviour
 
     private void DamagableObject_OnDamaged(DamagableObject damagable)
     {
-        faceController.SetFace(Face.Damage);
+        if (faceController) 
+            faceController.SetFace(Face.Damage);
         Invoke(nameof(ReturnToNeutralFace), 1f);
     }
 
     private void ReturnToNeutralFace()
     {
-        faceController.SetFace(Face.Neutral);
+        if (faceController)
+            faceController.SetFace(Face.Neutral);
     }
 
     private void OnDisable()

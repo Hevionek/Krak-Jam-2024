@@ -33,7 +33,7 @@ public class DamageMaterialEffect : MonoBehaviour
         float progress = 0;
         while (progress < 1)
         {
-            progress += Time.deltaTime;
+            progress += 2 * Time.deltaTime;
             meshRenderer.material.color = Color.Lerp(Color.red, initialColor, progress);
             yield return null;
         }

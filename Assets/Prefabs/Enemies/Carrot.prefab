@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9538806ee84b21e46b8b173cb4220dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 16
   health: 0
 --- !u!4 &3714606684841747320 stripped
 Transform:
@@ -128,6 +128,11 @@ PrefabInstance:
       propertyPath: activationConditions.Array.data[1]
       value: 
       objectReference: {fileID: 8259650708714247533}
+    - target: {fileID: 3409347730753863976, guid: bbac62fb6abdafb48b45e83f3f6ac683,
+        type: 3}
+      propertyPath: m_Speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6312363978154005477, guid: bbac62fb6abdafb48b45e83f3f6ac683,
         type: 3}
       propertyPath: m_LocalPosition.x
