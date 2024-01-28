@@ -47,6 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private bool CanRotate()
     {
-        return movement.IsGrounded && movement.transform.position.y < 0.15f;
+        return movement.IsGrounded && Mathf.Abs(movement.transform.position.y) < 0.15f;
     }
 }
