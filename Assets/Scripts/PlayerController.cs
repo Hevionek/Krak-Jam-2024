@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float horizontalRotationSpeed = 1.8f;
     [SerializeField]
-    private KeyCode switchKey = KeyCode.LeftShift;
+    private KeyCode switchKey = KeyCode.LeftControl;
 
     private void Update()
     {
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
 
         movement.CharacterController.gameObject.layer = undergroundValue switch
         {
-            >= 1 => layersSettings.overgroundLayer,
-            <= -1 => layersSettings.undergroundLayer,
+            >= 0.9f => layersSettings.overgroundLayer,
+            <= -0.9f => layersSettings.undergroundLayer,
             _ => layersSettings.noCollisionLayer,
         };
 
@@ -47,6 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private bool CanRotate()
     {
-        return movement.IsGrounded && movement.transform.position.y < 0.2f;
+        return movement.IsGrounded && movement.transform.position.y < 0.15f;
     }
 }
