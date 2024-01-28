@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         var undergroundValue = undergroundWorldChanger.UndergroundValue;
-        shootingController.enabled = viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
+        viewRotation.enabled = movement.enabled = !undergroundWorldChanger.IsInTransition;
         viewRotation.sensitivity.x = horizontalRotationSpeed * undergroundValue;
         var center = movement.CharacterController.center;
         center.y = undergroundValue;

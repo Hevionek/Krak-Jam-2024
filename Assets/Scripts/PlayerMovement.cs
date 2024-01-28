@@ -8,13 +8,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController _characterController;
-    public CharacterController CharacterController 
+    public CharacterController CharacterController
     {
-        get 
-        { 
+        get
+        {
             if (_characterController == null)
                 _characterController = GetComponent<CharacterController>();
-            return _characterController; 
+            return _characterController;
         }
     }
 
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("States")]
     [SerializeField, ReadOnly]
     private bool isGrounded;
-    public bool IsGrounded => isGrounded;
+    public bool IsGrounded => isGrounded || (CharacterController.collisionFlags & CollisionFlags.Below) > 0;
 
     [SerializeField, ReadOnly]
     private Vector3 velocity;
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             motionInput.Normalize();
 
         float ySpeed = velocity.y;
-        if (isGrounded)
+        if (IsGrounded)
         {
             ySpeed = -upProvider.up.y;
         }
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         velocity = moveSpeed * (forwardProvider.forward * motionInput.y + rightProvider.right * motionInput.x);
         velocity.y = ySpeed;
         
-        if (isGrounded && Input.GetKeyDown(jumpKey))
+        if (IsGrounded && Input.GetKeyDown(jumpKey))
             velocity += upProvider.up * jumpForce;
 
         CharacterController.Move(velocity * dt);
